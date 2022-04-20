@@ -1,16 +1,23 @@
 package com.xantrix.webapp.entities;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
-import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name = "ARTICOLI")
@@ -47,8 +54,8 @@ public class Articoli implements Serializable {
 	private Date dataCreaz;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CasacdeType.ALL, mappedBy = "articolo", orphanRemoval = true)
-	@JsonManageReference
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "articolo", orphanRemoval = true)
+@JsonManagedReference
 	private Set<Barcode> barcode = new HashSet<>();
 	
 	
