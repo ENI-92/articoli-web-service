@@ -47,7 +47,9 @@ public class Articoli implements Serializable {
 	private Date dataCreaz;
 	
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CasacdeType.ALL, mappedBy = "articolo", orphanRemoval = true)
+	@JsonManageReference
+	private Set<Barcode> barcode = new HashSet<>();
 	
 	
 	
